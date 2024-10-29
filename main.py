@@ -4,9 +4,6 @@ import discord
 from dotenv import load_dotenv
 from shady import *
 
-asd()
-asd2()
-
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
