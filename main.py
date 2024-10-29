@@ -1,7 +1,11 @@
 import os
 import discord
-import random
+#import random
 from dotenv import load_dotenv
+from shady import *
+
+asd()
+asd2()
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -14,29 +18,18 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    username = str(message.author).split("#")[0]
     channel = str(message.channel.name)
+    """
+    username = str(message.author).split("#")[0]
     user_message = str(message.content)
+    """
 
-    print(f'Message {user_message} by {username} on {channel}')
+    #print(f'Message {user_message} by {username} on {channel}')
 
     if message.author == client.user:
         return
 
     if channel == "bot":
-        if user_message.lower() == "hello" or user_message.lower() == "hi":
-            await message.channel.send(f'Hello {username}')
-            return
-        elif user_message.lower() == "bye":
-            await message.channel.send(f'Bye {username}')
-        elif user_message.lower() == "tell me a joke":
-            jokes = [" Can someone please shed more\
-            light on how my lamp got stolen?",
-                     "Why is she called llene? She\
-                     stands on equal legs.",
-                     "What do you call a gazelle in a \
-                     lions territory? Denzel."]
-            await message.channel.send(random.choice(jokes))
-
+        await HelloWorld(message)
 
 client.run(TOKEN)
