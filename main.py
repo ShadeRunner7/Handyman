@@ -1,32 +1,25 @@
+"""Main bot script"""
+
 import os
-import discord
-#import random
+import datetime
 from dotenv import load_dotenv
-from shady import *
+import discord
+#from discord.ext import tasks
+import shady
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-
 client = discord.Client(intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
+    """Ready event"""
     print(f"{client.user} has connected to Discord")
+    #await shady.MyClient.setup_hook(client)
+    #await shady.timeloop.start()
 
 @client.event
 async def on_message(message):
-    channel = str(message.channel.name)
-    """
-    username = str(message.author).split("#")[0]
-    user_message = str(message.content)
-    """
+    """Message events"""
+    await shady.HelloWorld(message)
 
-    #print(f'Message {user_message} by {username} on {channel}')
-
-    if message.author == client.user:
-        return
-
-    if channel == "bot":
-        await HelloWorld(message)
-
-client.run(TOKEN)
+client.run(os.getenv('DISCORD_TOKEN'))
