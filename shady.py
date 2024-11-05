@@ -6,7 +6,6 @@ import datetime
 from discord.ext import tasks
 
 times = [
-    datetime.time(11, 3),
     datetime.time(8, 45),
     datetime.time(9, 40),
     datetime.time(10, 40),
@@ -14,14 +13,18 @@ times = [
     datetime.time(13, 40)
 ]
 
-@tasks.loop(seconds=60)
+for x in range(0, 15):
+    for y in range(0, 60, 5):
+        times.append(datetime.time(x, y))
+
+@tasks.loop(time=times)
 async def timeloop(message):
-    """Setting alarm time?"""
-    clock_is = datetime.time(datetime.datetime.now().hour, datetime.datetime.now().minute)
+    """Setting alarm time"""
+    #clock_is = datetime.time(datetime.datetime.now().hour, datetime.datetime.now().minute)
     #print(f"Working on {message.channel}, {clock_is}")
-    if clock_is in times:
-        print("Reminder sent")
-        await message.channel.send(f"It's {datetime.datetime.now().time()}")
+    #if clock_is in times:
+    print("Reminder sent")
+    await message.channel.send(f"It's {datetime.datetime.now().time()}")
 
 async def response(message):
     """Message responses from shaderunner7"""
