@@ -20,6 +20,6 @@ async def on_ready():
 @client.event
 async def on_message(message):
     """Message events"""
-    await shady.HelloWorld(message)
+    await shady.response(message)
 
 client.run(os.getenv('DISCORD_TOKEN'))
