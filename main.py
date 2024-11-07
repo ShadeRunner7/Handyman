@@ -30,8 +30,8 @@ async def on_ready():
         channels[channel[0]] = client.get_channel(channel[1])
 
     try:
-        #await shady.timeloop.start(channels["general"])
-        await shady.timeloop.start(channels["bot-testing"])
+        await shady.timeloop.start(channels["general"])
+        #await shady.timeloop.start(channels["bot-testing"])
     except RuntimeError:
         print("Already running")
     #await shady.timeloop.start(channels["bot-testing"], True)

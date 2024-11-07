@@ -5,15 +5,14 @@ Shady stuff to respond to messages and a simple timer
 import datetime
 from discord.ext import tasks
 
-utc2 = pytz.timezone()
+offset = 2
 
 times = [
-    datetime.time(8, 55, tzinfo=utc2),
-    datetime.time(9, 45, tzinfo=utc2),
-    datetime.time(10, 35, tzinfo=utc2),
-    datetime.time(11, 25, tzinfo=utc2),
-    datetime.time(13, 10, tzinfo=utc2),
-    datetime.time(13, 42, tzinfo=utc2)
+    datetime.time(8 - offset, 55),
+    datetime.time(9 - offset, 50),
+    datetime.time(10 - offset, 35),
+    datetime.time(11 - offset, 25),
+    datetime.time(13 - offset, 10),
 ]
 
 test_times = []
