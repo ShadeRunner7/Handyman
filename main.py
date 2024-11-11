@@ -4,16 +4,16 @@ Main bot script
 
 import os
 import datetime
+import json
 from dotenv import load_dotenv
 import discord
 import shady
 
 load_dotenv()
 client = discord.Client(intents=discord.Intents.all())
-channels = {
-        "general": 1300143084977524800,
-        "bot-testing": 1301517218215100478
-    }
+path = __file__.removesuffix(os.path.basename(__file__))
+with open(f"{path}channels.json", "r") as file:
+    channels = json.load(file)
 
 @client.event
 async def on_ready():
@@ -30,8 +30,8 @@ async def on_ready():
         channels[channel[0]] = client.get_channel(channel[1])
 
     try:
-        await shady.timeloop.start(channels["general"])
-        #await shady.timeloop.start(channels["bot-testing"])
+        #await shady.timeloop.start(channels["general"])
+        await shady.timeloop.start(channels["bot-testing"])
     except RuntimeError:
         print("Already running")
     #await shady.timeloop.start(channels["bot-testing"], True)
