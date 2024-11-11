@@ -47,4 +47,4 @@ async def on_message(message):
     """Message events"""
     await shady.response(message, channels["bot-testing"])
 
-client.run(os.getenv('DISCORD_TOKEN'))
+client.run(os.getenv('DISCORD_TOKEN'), log_handler=None)
